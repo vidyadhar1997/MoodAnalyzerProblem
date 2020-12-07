@@ -19,18 +19,23 @@ namespace MoodAnalyzerProblem
         {
             this.message = message;
         }
-        
         public string analyseMood()
         {
-            if (message.Contains("Sad"))
+            try
             {
-                return "Sad";
+                if (message.Contains("Sad"))
+                {
+                    return "Sad";
+                }
+                else
+                {
+                    return "Happy";
+                }
             }
-            else 
+            catch
             {
-                return "Happy";
+                return null;
             }
-
         }
     }
 }
