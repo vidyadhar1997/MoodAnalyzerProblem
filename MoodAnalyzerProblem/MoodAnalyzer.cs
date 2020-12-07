@@ -12,13 +12,13 @@ namespace MoodAnalyzerProblem
         }
         public string analyseMood(string message)
         {
-            if (message.Equals("Happy"))
+            if (message.Equals("Sad"))
             {
-                return "Happy";
+                return "Sad";
             }
             else 
             {
-                return "Sad";
+                return "Happy";
             }
 
         }

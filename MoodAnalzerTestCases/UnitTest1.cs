@@ -13,11 +13,16 @@ namespace MoodAnalzerTestCases
             moodAnalyzer = new MoodAnalyzer();
         }
         [TestMethod]
-        public void TestMethod1()
+        public void givenMood_WhenSad_ShouldReturnSadMood()
         {
             String mood=moodAnalyzer.analyseMood("Sad");
             Assert.AreEqual(mood, "Sad");
-
+        }
+        [TestMethod]
+        public void givenMood_WhenHappy_ShouldReturnHappyMood()
+        {
+            String mood = moodAnalyzer.analyseMood("I am in Any mood");
+            Assert.AreEqual(mood, "Happy");
         }
     }
 }
