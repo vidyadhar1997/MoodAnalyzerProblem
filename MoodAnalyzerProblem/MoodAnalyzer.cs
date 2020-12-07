@@ -9,7 +9,7 @@ namespace MoodAnalyzerProblem
         private string message;
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To the Mood Analyzer Problem");
+            Console.WriteLine("Welcome To the Mood Analyzer Problems");
         }
         public MoodAnalyzer()
         {
