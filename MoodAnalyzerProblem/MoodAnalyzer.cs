@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MoodAnalyzerProblem
 {
-    class MoodAnalyzer
+    public class MoodAnalyzer
     {
         static void Main(string[] args)
         {
@@ -14,11 +14,11 @@ namespace MoodAnalyzerProblem
         {
             if (message.Equals("Happy"))
             {
-                return "Happy Mood";
+                return "Happy";
             }
             else 
             {
-                return "Sad Mood";
+                return "Sad";
             }
 
         }
