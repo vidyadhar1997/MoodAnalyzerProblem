@@ -6,13 +6,23 @@ namespace MoodAnalyzerProblem
 {
     public class MoodAnalyzer
     {
+        private string message;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To the Mood Analyzer Problem");
         }
-        public string analyseMood(string message)
+        public MoodAnalyzer()
         {
-            if (message.Equals("Sad"))
+
+        }
+        public MoodAnalyzer(String message)
+        {
+            this.message = message;
+        }
+        
+        public string analyseMood()
+        {
+            if (message.Contains("Sad"))
             {
                 return "Sad";
             }

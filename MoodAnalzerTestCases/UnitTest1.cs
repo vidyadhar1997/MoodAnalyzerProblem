@@ -7,22 +7,27 @@ namespace MoodAnalzerTestCases
     [TestClass]
     public class UnitTest1
     {
-        private readonly MoodAnalyzer moodAnalyzer;
+          MoodAnalyzer moodAnalyzer = null;
         public UnitTest1()
         {
-            moodAnalyzer = new MoodAnalyzer();
+          
         }
         [TestMethod]
         public void givenMood_WhenSad_ShouldReturnSadMood()
         {
-            String mood=moodAnalyzer.analyseMood("Sad");
-            Assert.AreEqual(mood, "Sad");
+            
+            moodAnalyzer = new MoodAnalyzer("I am in Sad Mood");
+            
+            string mood=moodAnalyzer.analyseMood();
+            Assert.AreEqual("Sad",mood);
         }
         [TestMethod]
         public void givenMood_WhenHappy_ShouldReturnHappyMood()
         {
-            String mood = moodAnalyzer.analyseMood("I am in Any mood");
-            Assert.AreEqual(mood, "Happy");
+            moodAnalyzer = new MoodAnalyzer("I am in happy Mood");
+            string mood = moodAnalyzer.analyseMood();
+            Assert.AreEqual("Happy", mood);
         }
+        
     }
 }
