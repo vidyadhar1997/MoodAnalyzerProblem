@@ -20,9 +20,16 @@ namespace MoodAnalzerTestCases
             Assert.AreEqual("Sad",mood);
         }
         [TestMethod]
-        public void givenMood_WhenHappy_ShouldReturnHappyMood()
+        public void givenMood_When_ShouldReturnHappyMood()
         {
             moodAnalyzer = new MoodAnalyzer("I am in happy Mood");
+            string mood = moodAnalyzer.analyseMood();
+            Assert.AreEqual("Happy", mood);
+        }
+        [TestMethod]
+        public void givenMood_WhenNull_ShouldReturnHappyMood()
+        {
+            moodAnalyzer = new MoodAnalyzer(null);
             string mood = moodAnalyzer.analyseMood();
             Assert.AreEqual("Happy", mood);
         }

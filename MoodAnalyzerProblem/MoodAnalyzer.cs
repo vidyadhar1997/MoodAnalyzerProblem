@@ -34,7 +34,7 @@ namespace MoodAnalyzerProblem
             }
             catch
             {
-                return null;
+                return "Happy";
             }
         }
     }
