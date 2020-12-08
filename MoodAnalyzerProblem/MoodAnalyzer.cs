@@ -33,7 +33,7 @@ namespace MoodAnalyzerProblem
         {
             try
             {
-                if (this.message.Equals(string.Empty))
+                if (this.message.Equals(""))
                 {
                     throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MESSAGE, "Mood Should Not Be Empty");
 
