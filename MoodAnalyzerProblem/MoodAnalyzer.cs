@@ -9,16 +9,26 @@ namespace MoodAnalyzerProblem
         private string message;
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To the Mood Analyzer Problems");
         }
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public MoodAnalyzer()
         {
 
         }
+        /// <summary>
+        /// Parameterized Constructor
+        /// </summary>
+        /// <param name="message">The message for intialization of message</param>
         public MoodAnalyzer(String message)
         {
             this.message = message;
         }
+        /// <summary>
+        /// Analyses the mood for happy or sad mood
+        /// </summary>
+        /// <returns>sad or happy when condtion is matched</returns>
         public string analyseMood()
         {
             try
