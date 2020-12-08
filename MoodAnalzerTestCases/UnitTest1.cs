@@ -8,30 +8,46 @@ namespace MoodAnalzerTestCases
     public class UnitTest1
     {
         MoodAnalyzer moodAnalyzer = null;
+        ///<summary>
+        /// Default constructor
+        ///</summary>
         public UnitTest1()
         {
           
         }
+        ///<summary>
+        /// TC 1.1 Given i am in sad mood should return sad mood.
+        ///</summary>
         [TestMethod]
-        public void givenMood_WhenSad_ShouldReturnSadMood()
+        public void GivenMood_WhenSad_ShouldReturnSadMood()
         {
+            string Expected = "Sad";
             moodAnalyzer = new MoodAnalyzer("I am in Sad Mood");
             string mood=moodAnalyzer.analyseMood();
-            Assert.AreEqual("Sad",mood);
+            Assert.AreEqual(Expected, mood);
         }
+        ///<summary>
+        /// TC 1.2 Given i am in Happy mood should return Happy mood.
+        ///</summary>
         [TestMethod]
-        public void givenMood_When_ShouldReturnHappyMood()
+        public void GivenMood_WhenHappy_ShouldReturnHappyMood()
         {
+            string Expected = "Happy";
             moodAnalyzer = new MoodAnalyzer("I am in happy Mood");
             string mood = moodAnalyzer.analyseMood();
-            Assert.AreEqual("Happy", mood);
+            Assert.AreEqual(Expected, mood);
         }
+        ///<summary>
+        /// TC 2.1 Given null mood should return happy mood.
+        ///</summary>
         [TestMethod]
-        public void givenMood_WhenNull_ShouldReturnHappyMood()
+        [DataRow(null)]
+        public void GivenMood_WhenNull_ShouldReturnHappyMood(string message)
         {
-            moodAnalyzer = new MoodAnalyzer(null);
+            string Expected = "Happy";
+            moodAnalyzer = new MoodAnalyzer(message);
             string mood = moodAnalyzer.analyseMood();
-            Assert.AreEqual("Happy", mood);
+            Assert.AreEqual(Expected, mood);
         }
     }
 }
