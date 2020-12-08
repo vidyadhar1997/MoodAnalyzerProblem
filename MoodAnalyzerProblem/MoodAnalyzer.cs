@@ -26,13 +26,18 @@ namespace MoodAnalyzerProblem
             this.message = message;
         }
         /// <summary>
-        /// Analyses the mood for happy or sad mood
+        /// Analyses the mood for happy,sad,handling exception for empty mood
         /// </summary>
         /// <returns>sad or happy when condtion is matched</returns>
         public string analyseMood()
         {
             try
             {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.EMPTY_MESSAGE, "Mood Should Not Be Empty");
+
+                }
                 if (message.Contains("Sad"))
                 {
                     return "Sad";
@@ -42,9 +47,9 @@ namespace MoodAnalyzerProblem
                     return "Happy";
                 }
             }
-            catch
+            catch(NullReferenceException)
             {
-                return "Happy";
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MESSAGE,"Mood Should Not Be Null");
             }
         }
     }
