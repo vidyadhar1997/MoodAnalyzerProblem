@@ -135,9 +135,9 @@ namespace MoodAnalzerTestCases
         /// </summary>
         [TestMethod]
         public void GivenMoodAnalyzer_WhenClassName_ShouldReturnMoodAnalyzerObjectUsingParameterizedConstructor()
-        { 
+        {
             object expected = new MoodAnalyzer("Happy");
-            object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer","Happy");
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", "Happy");
             expected.Equals(obj);
         }
         /// <summary>
@@ -149,7 +149,7 @@ namespace MoodAnalzerTestCases
             string expected = "Class Not Found";
             try
             {
-                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.WrongClass", "MoodAnalyzer","Happy");
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.WrongClass", "MoodAnalyzer", "Happy");
             }
             catch (MoodAnalyzerException exception)
             {
@@ -181,6 +181,22 @@ namespace MoodAnalzerTestCases
             string expected = "Happy";
             object obj = MoodAnalyzerFactory.InvokeAnalyseMood("Happy", "analyseMood");
             Assert.AreEqual(expected, obj);
+        }
+        /// <summary>
+        ///  TC 6.2 Given happy message when improper methode then should throw 
+        /// </summary>
+        [TestMethod]
+        public void GivenHappyMessage_WhenImproperMethode_ThenShouldThrowMoodAnalysisException()
+        {
+            string expected = "Method is not found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.InvokeAnalyseMood("Happy", "WrongAnalyseMood");
+            }
+            catch(MoodAnalyzerException exception) 
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
         }
     }
 }
