@@ -53,7 +53,7 @@ namespace MoodAnalzerTestCases
         /// TC 3.1 Given Mood when null should throw mood analysis exception
         /// </summary>
         [TestMethod]
-        public void GivenMood_WhenNull_ThenShouldThrowMoodAnalysisException()
+        public void GivenMood_WhenNull_ThenShouldThrowMoodAnalyzerException()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace MoodAnalzerTestCases
         /// TC 3.2 Given Empty Mood Should Throw MoodAnalysisException indicating Empty Mood
         /// </summary>
         [TestMethod]
-        public void GivenMood_WhenEmpty_ThenShouldThrowMoodAnalysisException()
+        public void GivenMood_WhenEmpty_ThenShouldThrowMoodAnalyzerException()
         {
             try
             {
@@ -100,12 +100,28 @@ namespace MoodAnalzerTestCases
         /// TC 4.2 Given class name  when not proper then throw mood analyzer exception
         /// </summary>
         [TestMethod]
-        public void GivenClassName_WhenImproper_ThenShouldThrowMoodAnalysisException()
+        public void GivenClassName_WhenImproper_ThenShouldThrowMoodAnalyzerException()
         {
             string expected = "Class Not Found";
             try
             {
                 object obj = MoodAnalyzerFactory.CreateMoodAnalyzer("MoodAnalyzerProblem.WrongClass", "WrongClass");
+            }
+            catch (MoodAnalyzerException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
+        /// <summary>
+        /// TC 4.3 Given class when constructor not proper then throw mood analyzer exception
+        /// </summary>
+        [TestMethod]
+        public void GivenClass_WhenConstructorNotProper_ThenShouldThrowMoodAnalyzerException()
+        {
+            string expected = "Constructor is Not Found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzer("MoodAnalyzerProblem.MoodAnalyzer", "WrongConstructor");
             }
             catch (MoodAnalyzerException exception)
             {
