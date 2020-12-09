@@ -22,7 +22,7 @@ namespace MoodAnalyzerProblem
         /// <summary>
         /// Mood Analyzer Exception parameterized constructor
         /// </summary>
-        /// <param name="type">The type</param>
+        /// <param name="type">The type is Exception type</param>
         /// <param name="message">The message.</param>
         public MoodAnalyzerException(ExceptionType type, string message) : base(message)
         {
