@@ -129,9 +129,9 @@ namespace MoodAnalzerTestCases
             }
         }
         /// <summary>
-        ///  TC 4.1 Given Mood Analyser class name should return moodAnalyzer object
+        ///  TC 5.1 Given Mood Analyser when class name with parameterized constructor should return object
         ///  MoodAnalyzerProblem<<-this is nameSpace
-        ///  MoodAnalyzer<<-this is for class name and constructor name
+        ///  MoodAnalyzer<<-this is for class
         /// </summary>
         [TestMethod]
         public void GivenMoodAnalyzer_WhenClassName_ShouldReturnMoodAnalyzerObjectUsingParameterizedConstructor()
@@ -139,6 +139,22 @@ namespace MoodAnalzerTestCases
             object expected = new MoodAnalyzer("Happy");
             object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer","Happy");
             expected.Equals(obj);
+        }
+        /// <summary>
+        /// TC 5.2 Given class name  when not proper then throw no such class exception
+        /// </summary>
+        [TestMethod]
+        public void GivenClassName_WhenImproper_ThenShouldThrowNoSuchClassException()
+        {
+            string expected = "Class Not Found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.WrongClass", "MoodAnalyzer","Happy");
+            }
+            catch (MoodAnalyzerException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
         }
     }
 }
