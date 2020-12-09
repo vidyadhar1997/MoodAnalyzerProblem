@@ -83,5 +83,18 @@ namespace MoodAnalzerTestCases
                 Assert.AreEqual("Mood Should Not Be Empty", e.Message);
             }
         }
+        /// <summary>
+        ///  TC 4.1 Given Mood Analyser class name should return moodAnalyzer object
+        ///  MoodAnalyzerProblem<<-this is nameSpace
+        ///  MoodAnalyzer<<-this is for class name and constructor name
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyzer_WhenClassName_ShouldReturnMoodAnalyzerObject()
+        {
+            string message = null;
+            object expected = new MoodAnalyzer(message);
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyzer("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer");
+            expected.Equals(obj);
+        }
     }
 }
