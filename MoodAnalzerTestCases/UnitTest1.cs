@@ -156,5 +156,21 @@ namespace MoodAnalzerTestCases
                 Assert.AreEqual(expected, exception.Message);
             }
         }
+        /// <summary>
+        /// TC 5.3 Given class when constructor not proper then throw no such constructor exception
+        /// </summary>
+        [TestMethod]
+        public void GivenClass_WhenConstructorNotProper_ThenShouldThrowNoSuchConstructorException()
+        {
+            string expected = "Constructor is Not Found";
+            try
+            {
+                object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "WrongConstructor", "Happy");
+            }
+            catch (MoodAnalyzerException exception)
+            {
+                Assert.AreEqual(expected, exception.Message);
+            }
+        }
     }
 }
