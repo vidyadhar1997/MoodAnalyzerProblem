@@ -19,7 +19,7 @@ namespace MoodAnalyzerProblem
         /// or
         /// Constructor is Not Found exception is throw when condtion is not matched
         /// </exception>
-        public static object CreateMoodAnalyzer(string className,string constructorName)
+        public static object CreateMoodAnalyzer(string className, string constructorName)
         {
             string pattern = @"." + constructorName + "$";
             Match result = Regex.Match(className, pattern);
@@ -31,17 +31,23 @@ namespace MoodAnalyzerProblem
                     Type moodAnalyseType = executing.GetType(className);
                     return Activator.CreateInstance(moodAnalyseType);
                 }
-                catch 
+                catch
                 {
-                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class Not Found"); 
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
                 }
             }
             else
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Constructor is Not Found");
             }
-        }
-        public static object CreateMoodAnalyzerUsingParameterizedConstructor(string className, string constructorName,string message)
+        }/// <summary>
+        /// create mood analyzer using parameteized constructor
+        /// </summary>
+        /// <param name="className">class name is nothing but name of class</param>
+        /// <param name="constructorName">constructor name is the constructor used in class</param>
+        /// <param name="message">message will be any</param>
+        /// <returns>message</returns>
+        public static object CreateMoodAnalyzerUsingParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyzer);
             if (type.Name.Equals(className) || type.FullName.Equals(className))
@@ -60,6 +66,28 @@ namespace MoodAnalyzerProblem
             else
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
+            }
+        }
+        /// <summary>
+        /// Invokes the analyse mood.
+        /// </summary>
+        /// <param name="message">The message will be any its depend on user</param>
+        /// <param name="methodeName">create mood analyzer using parameterized constructor</param>
+        /// <returns>message</returns>
+        /// <exception cref="MoodAnalyzerException">Method is not found</exception>
+        public static string InvokeAnalyseMood(string message, string methodeName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyzerProblem.MoodAnalyzer");
+                object moodAnalyseObject = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer", message);
+                MethodInfo methodeInfo = type.GetMethod(methodeName);
+                object mood = methodeInfo.Invoke(moodAnalyseObject, null);
+                return mood.ToString();
+            }
+            catch
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Method is not found");
             }
         }
     }
