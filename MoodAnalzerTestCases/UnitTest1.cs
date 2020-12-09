@@ -128,5 +128,17 @@ namespace MoodAnalzerTestCases
                 Assert.AreEqual(expected, exception.Message);
             }
         }
+        /// <summary>
+        ///  TC 4.1 Given Mood Analyser class name should return moodAnalyzer object
+        ///  MoodAnalyzerProblem<<-this is nameSpace
+        ///  MoodAnalyzer<<-this is for class name and constructor name
+        /// </summary>
+        [TestMethod]
+        public void GivenMoodAnalyzer_WhenClassName_ShouldReturnMoodAnalyzerObjectUsingParameterizedConstructor()
+        { 
+            object expected = new MoodAnalyzer("Happy");
+            object obj = MoodAnalyzerFactory.CreateMoodAnalyzerUsingParameterizedConstructor("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer","Happy");
+            expected.Equals(obj);
+        }
     }
 }
