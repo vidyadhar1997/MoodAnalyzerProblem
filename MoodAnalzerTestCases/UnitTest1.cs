@@ -193,7 +193,7 @@ namespace MoodAnalzerTestCases
             {
                 object obj = MoodAnalyzerFactory.InvokeAnalyseMood("Happy", "WrongAnalyseMood");
             }
-            catch(MoodAnalyzerException exception) 
+            catch (MoodAnalyzerException exception)
             {
                 Assert.AreEqual(expected, exception.Message);
             }
@@ -205,8 +205,24 @@ namespace MoodAnalzerTestCases
         public void GivenMessage_WhenHappyWithReflector_ThenShouldReturnHappy()
         {
             string Expected = "Happy";
-            string result=MoodAnalyzerFactory.SetField("Happy", "message");
+            string result = MoodAnalyzerFactory.SetField("Happy", "message");
             Assert.AreEqual(result, Expected);
+        }
+        /// <summary>
+        /// TC 7.2 Given field when improper then should throw exception with no such field
+        /// </summary>
+        [TestMethod]
+        public void GivenField_WhenImproper_ThenShouldThrowNoSuchFieldException()
+        {
+            string Expected = "Field is not found";
+            try
+            {
+                string result = MoodAnalyzerFactory.SetField("Happy", "WrongmessageField");
+            }
+            catch (MoodAnalyzerException exception)
+            {
+                Assert.AreEqual(Expected, exception.Message);
+            }
         }
     }
 }
