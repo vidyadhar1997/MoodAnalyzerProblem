@@ -198,5 +198,15 @@ namespace MoodAnalzerTestCases
                 Assert.AreEqual(expected, exception.Message);
             }
         }
+        /// <summary>
+        /// TC 7.1 Given happy message with reflector then should return happy
+        /// </summary>
+        [TestMethod]
+        public void GivenMessage_WhenHappyWithReflector_ThenShouldReturnHappy()
+        {
+            string Expected = "Happy";
+            string result=MoodAnalyzerFactory.SetField("Happy", "message");
+            Assert.AreEqual(result, Expected);
+        }
     }
 }
