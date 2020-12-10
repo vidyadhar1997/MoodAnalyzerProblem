@@ -225,12 +225,12 @@ namespace MoodAnalzerTestCases
             }
         }
         /// <summary>
-        /// TC 7.3 Given field when improper then should throw exception with no such field
+        /// TC 7.3 Given message when null then should throw exception message should not be null
         /// </summary>
         [TestMethod]
         public void GivenMessage_WhenNull_ThenShouldThrowMessageShouldNotNullException()
         {
-            string Expected = "Message should not be nulls";
+            string Expected = "Message should not be null";
             try
             {
                 string result = MoodAnalyzerFactory.SetField(null, "message");
