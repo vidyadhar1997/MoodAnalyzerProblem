@@ -224,5 +224,21 @@ namespace MoodAnalzerTestCases
                 Assert.AreEqual(Expected, exception.Message);
             }
         }
+        /// <summary>
+        /// TC 7.3 Given field when improper then should throw exception with no such field
+        /// </summary>
+        [TestMethod]
+        public void GivenMessage_WhenNull_ThenShouldThrowMessageShouldNotNullException()
+        {
+            string Expected = "Message should not be nulls";
+            try
+            {
+                string result = MoodAnalyzerFactory.SetField(null, "message");
+            }
+            catch (MoodAnalyzerException exception)
+            {
+                Assert.AreEqual(Expected, exception.Message);
+            }
+        }
     }
 }
