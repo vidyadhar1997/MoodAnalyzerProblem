@@ -41,12 +41,12 @@ namespace MoodAnalyzerProblem
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Constructor is Not Found");
             }
         }/// <summary>
-        /// create mood analyzer using parameteized constructor
-        /// </summary>
-        /// <param name="className">class name is nothing but name of class</param>
-        /// <param name="constructorName">constructor name is the constructor used in class</param>
-        /// <param name="message">message will be any</param>
-        /// <returns>message</returns>
+         /// create mood analyzer using parameteized constructor
+         /// </summary>
+         /// <param name="className">class name is nothing but name of class</param>
+         /// <param name="constructorName">constructor name is the constructor used in class</param>
+         /// <param name="message">message will be any</param>
+         /// <returns>message</returns>
         public static object CreateMoodAnalyzerUsingParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyzer);
@@ -88,6 +88,36 @@ namespace MoodAnalyzerProblem
             catch
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Method is not found");
+            }
+        }
+        /// <summary>
+        /// creating Sets the field.
+        /// </summary>
+        /// <param name="message">The message contain happy.</param>
+        /// <param name="fieldName">Name of the field that is message.</param>
+        /// <returns>message of mood analyzer class</returns>
+        /// <exception cref="MoodAnalyzerException">
+        /// Message should not be null
+        /// or
+        /// Field is not found
+        /// </exception>
+        public static string SetField(string message, string fieldName)
+        {
+            try
+            {
+                MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
+                Type type = typeof(MoodAnalyzer);
+                FieldInfo field = type.GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
+                if (message == null)
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_FIELD, "Message should not be null");
+                }
+                field.SetValue(moodAnalyzer, message);
+                return moodAnalyzer.message;
+            }
+            catch(NullReferenceException)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_FIELD, "Field is not found");
             }
         }
     }
