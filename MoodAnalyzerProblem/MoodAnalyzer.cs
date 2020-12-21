@@ -10,6 +10,7 @@ namespace MoodAnalyzerProblem
         static void Main(string[] args)
         {
         }
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -17,6 +18,7 @@ namespace MoodAnalyzerProblem
         {
 
         }
+
         /// <summary>
         /// Parameterized Constructor
         /// </summary>
@@ -25,6 +27,7 @@ namespace MoodAnalyzerProblem
         {
             this.message = message;
         }
+
         /// <summary>
         /// Analyses the mood for happy,sad,handling exception for empty mood
         /// </summary>

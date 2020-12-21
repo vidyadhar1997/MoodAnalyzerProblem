@@ -40,7 +40,9 @@ namespace MoodAnalyzerProblem
             {
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Constructor is Not Found");
             }
-        }/// <summary>
+        }
+
+        /// <summary>
          /// create mood analyzer using parameteized constructor
          /// </summary>
          /// <param name="className">class name is nothing but name of class</param>
@@ -68,6 +70,7 @@ namespace MoodAnalyzerProblem
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
             }
         }
+
         /// <summary>
         /// Invokes the analyse mood.
         /// </summary>
@@ -90,6 +93,7 @@ namespace MoodAnalyzerProblem
                 throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NO_SUCH_METHODE, "Method is not found");
             }
         }
+
         /// <summary>
         /// creating Sets the field.
         /// </summary>
@@ -122,3 +126,4 @@ namespace MoodAnalyzerProblem
         }
     }
 }
+

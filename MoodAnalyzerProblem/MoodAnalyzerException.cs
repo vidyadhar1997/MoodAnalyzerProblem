@@ -19,6 +19,7 @@ namespace MoodAnalyzerProblem
             OBJECT_CREATION_ISSUE
         }
         ExceptionType type;
+
         /// <summary>
         /// Mood Analyzer Exception parameterized constructor
         /// </summary>
